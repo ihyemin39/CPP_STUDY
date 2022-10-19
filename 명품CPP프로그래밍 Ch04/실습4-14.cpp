@@ -4,7 +4,7 @@
 #include <ctime>
 using namespace std;
 
-// ¼±¼ö¸¦ Ãß»óÈ­ÇÑ Å¬·¡½º
+// ì„ ìˆ˜ë¥¼ ì¶”ìƒí™”í•œ í´ë˜ìŠ¤
 class Player {
 	string name;
 public:
@@ -13,17 +13,17 @@ public:
 	}
 	void setName(string name) { this->name = name; }
 	string getName() { return name; }
-	void getEnterKey() { // <Enter> Å°°¡ ÀÔ·ÂµÇ¸é ¸®ÅÏ
+	void getEnterKey() { // <Enter> í‚¤ê°€ ì…ë ¥ë˜ë©´ ë¦¬í„´
 		char buf[100];
 		cin.getline(buf, 99); // wait <Enter> key
 	}
 };
 
-// °·ºí¸µ °ÔÀÓ ÀüÃ¼¸¦ ´Ù·ç´Â Å¬·¡½º
+// ê°¬ë¸”ë§ ê²Œì„ ì „ì²´ë¥¼ ë‹¤ë£¨ëŠ” í´ë˜ìŠ¤
 class GamblingGame {
-	Player p[2]; // 2¸íÀÇ ¼±¼ö
-	int num[3]; // ·£´ıÇÏ°Ô »ı¼ºµÈ 3°³ÀÇ ¼ö¸¦ ÀúÀåÇÏ´Â ¹è¿­
-	bool matchAll(); // num[] ¹è¿­ÀÇ ¼ö°¡ ¸ğµÎ ÀÏÄ¡ÇÏ¸é true ¸®ÅÏ
+	Player p[2]; // 2ëª…ì˜ ì„ ìˆ˜
+	int num[3]; // ëœë¤í•˜ê²Œ ìƒì„±ëœ 3ê°œì˜ ìˆ˜ë¥¼ ì €ì¥í•˜ëŠ” ë°°ì—´
+	bool matchAll(); // num[] ë°°ì—´ì˜ ìˆ˜ê°€ ëª¨ë‘ ì¼ì¹˜í•˜ë©´ true ë¦¬í„´
 public:
 	GamblingGame();
 	void run();
@@ -34,9 +34,9 @@ GamblingGame::GamblingGame() {
 	srand((unsigned)time(0)); // new seed
 }
 
-bool GamblingGame::matchAll() { // num[] ¹è¿­ÀÇ ¼ö°¡ ¸ğµÎ ÀÏÄ¡ÇÏ¸é true ¸®ÅÏ
+bool GamblingGame::matchAll() { // num[] ë°°ì—´ì˜ ìˆ˜ê°€ ëª¨ë‘ ì¼ì¹˜í•˜ë©´ true ë¦¬í„´
 	for (int i = 0; i < 3; i++) {
-		if (num[i] != num[0]) { // ÇÏ³ª¶óµµ ´Ù¸£¸é false
+		if (num[i] != num[0]) { // í•˜ë‚˜ë¼ë„ ë‹¤ë¥´ë©´ false
 			return false;
 		}
 	}
@@ -44,28 +44,28 @@ bool GamblingGame::matchAll() { // num[] ¹è¿­ÀÇ ¼ö°¡ ¸ğµÎ ÀÏÄ¡ÇÏ¸é true ¸®ÅÏ
 }
 
 void GamblingGame::run() {
-	cout << "***** °·ºí¸µ °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù. *****" << endl;
+	cout << "***** ê°¬ë¸”ë§ ê²Œì„ì„ ì‹œì‘í•©ë‹ˆë‹¤. *****" << endl;
 
 	string name;
-	cout << "Ã¹¹øÂ° ¼±¼ö ÀÌ¸§>> ";
+	cout << "ì²«ë²ˆì§¸ ì„ ìˆ˜ ì´ë¦„>> ";
 	getline(cin, name);
 	p[0].setName(name);
 
 	int i = 0;
 	while (true) {
 		cout << p[i].getName() + ":<Enter>";
-		p[i].getEnterKey(); // Âü°¡ÀÚ°¡ enterÅ° ÀÔ·ÂÇÒ ¶§±îÁö ±â´Ù¸²
+		p[i].getEnterKey(); // ì°¸ê°€ìê°€ enterí‚¤ ì…ë ¥í•  ë•Œê¹Œì§€ ê¸°ë‹¤ë¦¼
 		cout << "\t\t";
-		for (i = 0; i < 3; i++) {
-			num[i] = rand() % 3; // 0~2±îÁöÀÇ ÀÓÀÇÀÇ ¼ö ¹ß»ı
+		for (int i = 0; i < 3; i++) {
+			num[i] = rand() % 3; // 0~2ê¹Œì§€ì˜ ì„ì˜ì˜ ìˆ˜ ë°œìƒ
 			cout << num[i] << '\t';
 		}
-		if (matchAll()) { // p[i]°¡ winner
-			cout << p[i].getName() + "´Ô ½Â¸®!!" << endl;
+		if (matchAll()) { // p[i]ê°€ winner
+			cout << p[i].getName() + "ë‹˜ ìŠ¹ë¦¬!!" << endl;
 			return; // program exits
 		}
 		else {
-			cout << "¾Æ½±±º¿ä!" << endl;
+			cout << "ì•„ì‰½êµ°ìš”!" << endl;
 		}
 
 		i++;
