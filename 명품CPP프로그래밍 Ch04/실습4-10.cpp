@@ -12,12 +12,12 @@ public:
 
 class Family {
 	string name;
-	Person* p; // Person ¹è¿­ Æ÷ÀÎÅÍ
-	int size; //  Person ¹è¿­ÀÇ Å©±â. °¡Á· ±¸¼º¿ø ¼ö
+	Person* p; // Person ë°°ì—´ í¬ì¸í„°
+	int size; //  Person ë°°ì—´ì˜ í¬ê¸°. ê°€ì¡± êµ¬ì„±ì› ìˆ˜
 public:
-	Family(string name, int size); // size °³¼ö¸¸Å­ Person ¹è¿­ µ¿Àû »ı¼º
+	Family(string name, int size); // size ê°œìˆ˜ë§Œí¼ Person ë°°ì—´ ë™ì  ìƒì„±
 	void setName(int index, string name);
-	void show(); // ¸ğµç °¡Á· ±¸¼º¿ø Ãâ·Â
+	void show(); // ëª¨ë“  ê°€ì¡± êµ¬ì„±ì› ì¶œë ¥
 	~Family();
 };
 
@@ -28,7 +28,7 @@ Family::Family(string name, int size) {
 }
 
 Family::~Family() {
-	delete p;
+	delete [] p;
 }
 
 void Family::setName(int index, string name) {
@@ -36,7 +36,7 @@ void Family::setName(int index, string name) {
 }
 
 void Family::show() {
-	cout << name + "°¡Á·Àº ´ÙÀ½°ú °°ÀÌ " << size << "¸í ÀÔ´Ï´Ù." << endl;
+	cout << name + "ê°€ì¡±ì€ ë‹¤ìŒê³¼ ê°™ì´ " << size << "ëª… ì…ë‹ˆë‹¤." << endl;
 	for (int i = 0; i < size; i++) {
 		cout << p[i].getName() << '\t';
 	}
@@ -45,7 +45,7 @@ void Family::show() {
 
 
 int main() {
-	Family* simpson = new Family("Simpson", 3); // 3¸íÀ¸·Î ±¸¼ºµÈ Simpson °¡Á·
+	Family* simpson = new Family("Simpson", 3); // 3ëª…ìœ¼ë¡œ êµ¬ì„±ëœ Simpson ê°€ì¡±
 	simpson->setName(0, "Mr. Simpson");
 	simpson->setName(1, "Mrs. Simpson");
 	simpson->setName(2, "Bart Simpson");
